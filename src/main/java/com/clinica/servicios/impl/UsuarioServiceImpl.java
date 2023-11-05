@@ -1,5 +1,6 @@
 package com.clinica.servicios.impl;
 
+import com.clinica.modelo.Citas;
 import com.clinica.modelo.Usuario;
 import com.clinica.modelo.UsuarioRol;
 import com.clinica.repositorios.RolRepository;
@@ -9,6 +10,7 @@ import com.clinica.servicios.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -46,5 +48,10 @@ public class UsuarioServiceImpl implements UsuarioService {
     public void eliminarUsuario(Long usuarioId) {
         usuarioRepository.deleteById(usuarioId);
     }
+
+	@Override
+	public List<Usuario> listar() {
+		return usuarioRepository.findAll();
+	}
 
 }

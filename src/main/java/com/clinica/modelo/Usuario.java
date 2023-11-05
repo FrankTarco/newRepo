@@ -84,6 +84,7 @@ public class Usuario implements UserDetails {
             autoridades.add(new Authority(usuarioRol.getRol().getRolNombre()));
         });
         return autoridades;
+//        return null;
     }
 
     public String getPassword() {
