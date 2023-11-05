@@ -19,7 +19,7 @@ import java.util.Set;
 @RequestMapping("/usuarios")
 @CrossOrigin("*")
 public class UsuarioController {
-
+//Arriaga
     @Autowired
     private UsuarioService usuarioService;
 
