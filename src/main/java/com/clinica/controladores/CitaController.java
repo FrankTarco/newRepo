@@ -26,7 +26,7 @@ import com.clinica.servicios.ICitaService;
 @RequestMapping("/citas")
 @CrossOrigin("*")
 public class CitaController {
-
+//comentario
 	@Autowired
 	private ICitaService service;
 	
