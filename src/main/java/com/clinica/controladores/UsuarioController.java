@@ -1,14 +1,18 @@
 package com.clinica.controladores;
 
 import com.clinica.modelo.Rol;
+import com.clinica.modelo.TipoCita;
 import com.clinica.modelo.Usuario;
 import com.clinica.modelo.UsuarioRol;
 import com.clinica.servicios.UsuarioService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -36,7 +40,11 @@ public class UsuarioController {
         return usuarioService.guardarUsuario(usuario,usuarioRoles);
     }
 
-
+    @GetMapping("/")
+	public ResponseEntity<List<Usuario>> listar(){
+		List<Usuario> obj = usuarioService.listar();
+		return new ResponseEntity<List<Usuario>>(obj, HttpStatus.OK);
+	}
     @GetMapping("/{username}")
     public Usuario obtenerUsuario(@PathVariable("username") String username){
         return usuarioService.obtenerUsuario(username);

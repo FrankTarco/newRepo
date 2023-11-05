@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,24 +20,25 @@ import com.clinica.servicios.ITipoCitaService;
 
 @RestController
 @RequestMapping("/tipocita")
+@CrossOrigin("*")
 public class TipoCitaController {
 
 	@Autowired
 	ITipoCitaService service;
 	
-	@GetMapping
+	@GetMapping("/")
 	public ResponseEntity<List<TipoCita>> listar(){
 		List<TipoCita> obj = service.listar();
 		return new ResponseEntity<List<TipoCita>>(obj, HttpStatus.OK);
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public ResponseEntity<TipoCita> registrar(@RequestBody TipoCita tipocita){
 		TipoCita obj = service.registrar(tipocita);
 		return new ResponseEntity<TipoCita>(obj, HttpStatus.OK);
 	}
 
-	@PutMapping
+	@PutMapping("/")
 	public ResponseEntity<TipoCita> actualizar(@RequestBody TipoCita tipocita){
 		TipoCita obj = service.registrar(tipocita);
 		return new ResponseEntity<TipoCita>(obj, HttpStatus.OK);
