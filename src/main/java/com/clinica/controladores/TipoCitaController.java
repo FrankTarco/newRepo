@@ -32,7 +32,7 @@ public class TipoCitaController {
 		return new ResponseEntity<List<TipoCita>>(obj, HttpStatus.OK);
 	}
 	
-	@PostMapping("/")
+	@PostMapping("/registrar/")
 	public ResponseEntity<TipoCita> registrar(@RequestBody TipoCita tipocita){
 		TipoCita obj = service.registrar(tipocita);
 		return new ResponseEntity<TipoCita>(obj, HttpStatus.OK);

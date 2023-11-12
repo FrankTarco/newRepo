@@ -22,15 +22,31 @@ public class UsuarioController {
 //Arriaga
     @Autowired
     private UsuarioService usuarioService;
-
-    @PostMapping("/")
-    public Usuario guardarUsuario(@RequestBody Usuario usuario) throws Exception{
+    @PostMapping("/registrarMedico/")
+    public Usuario guardarMedico(@RequestBody Usuario usuario) throws Exception{
         usuario.setPerfil("default.png");
         Set<UsuarioRol> usuarioRoles = new HashSet<>();
 
         Rol rol = new Rol();
         rol.setRolId(2L);
         rol.setRolNombre("NORMAL");
+
+        UsuarioRol usuarioRol = new UsuarioRol();
+        usuarioRol.setUsuario(usuario);
+        usuarioRol.setRol(rol);
+
+        usuarioRoles.add(usuarioRol);
+        return usuarioService.guardarUsuario(usuario,usuarioRoles);
+    }
+    
+    @PostMapping("/")
+    public Usuario guardarUsuario(@RequestBody Usuario usuario) throws Exception{
+        usuario.setPerfil("default.png");
+        Set<UsuarioRol> usuarioRoles = new HashSet<>();
+
+        Rol rol = new Rol();
+        rol.setRolId(3L);
+        rol.setRolNombre("CLIENTE");
 
         UsuarioRol usuarioRol = new UsuarioRol();
         usuarioRol.setUsuario(usuario);
