@@ -36,8 +36,9 @@ public class CartService {
         //Long username = Long.parseLong(JwtRequestFilter.CURRENT_USER);
 
         Usuario user = null;
+        
         if(username != null) {
-            user = userDao.findById(username).get();
+            user = userDao.findByUsername(username);
         }
 
         List<Cart> cartList = cartDao.findByUser(user);
@@ -58,7 +59,7 @@ public class CartService {
     public List<Cart> getCartDetails() {
         String username = JwtRequestFilter.CURRENT_USER;
     	//Long username = Long.parseLong(JwtRequestFilter.CURRENT_USER);
-        Usuario user = userDao.findById(username).get();
+        Usuario user = userDao.findByUsername(username);
         return cartDao.findByUser(user);
     }
 }
