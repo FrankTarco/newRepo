@@ -11,4 +11,5 @@ public interface ICitaService {
 	Citas actualizar(Citas citas);
 	void eliminar(Integer codigo);
 	Citas ListarPorId(Integer codigo);
+	List<Citas> buscarCitaPorEstado(Integer estado);
 }

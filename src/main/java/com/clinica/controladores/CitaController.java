@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.clinica.modelo.Citas;
+import com.clinica.modelo.Product;
 import com.clinica.modelo.Citas;
 import com.clinica.servicios.ICitaService;
+import com.clinica.servicios.impl.CitaServiceImpl;
 
 
 @RestController
@@ -29,6 +31,15 @@ public class CitaController {
 //comentario
 	@Autowired
 	private ICitaService service;
+	
+	
+
+	
+	@GetMapping("/obtenerCitasPorEstado/{estado}")
+	public ResponseEntity<List<Citas>> obtenerCitasPorEstado(@PathVariable("estado") Integer estado) {
+		List<Citas> citas = service.buscarCitaPorEstado(estado);
+	    return new ResponseEntity<>(citas, HttpStatus.OK);
+	}
 	
 	@GetMapping("/")
 	public ResponseEntity<List<Citas>> listar(){

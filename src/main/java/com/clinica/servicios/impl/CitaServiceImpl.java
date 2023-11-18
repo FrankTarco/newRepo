@@ -48,6 +48,18 @@ public class CitaServiceImpl implements ICitaService{
 	public Citas ListarPorId(Integer codigo) {
 		return repo.findById(codigo).orElse(null);
 	}
+
+	@Override
+	public List<Citas> buscarCitaPorEstado(Integer estado) {
+	    return repo.findByEstado(estado);
+	}
+
+//	@Override
+//	public Citas buscarCitaPorEstado(Integer estado) {
+//		return repo.findByEstado(estado);
+//	}
 	
-	
+//	public Citas buscarCitaPorEstado(int estado) {
+//        return repo.findByEstado(estado);
+//    }
 }
