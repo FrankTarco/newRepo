@@ -1,11 +1,14 @@
 package com.clinica.modelo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -77,6 +80,29 @@ public class Usuario implements UserDetails {
         this.username = username;
     }
 
+    
+    
+//    @Transient
+//    public boolean ignoreAuthorities;
+//
+//    public void setIgnoreAuthorities(boolean ignoreAuthorities) {
+//        this.ignoreAuthorities = ignoreAuthorities;
+//    }
+//
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        if (ignoreAuthorities) {
+//            // En este caso, devuelve una colección vacía o lo que sea necesario cuando se ignora
+//            return Collections.emptyList();
+//        } else {
+//            Set<Authority> autoridades = new HashSet<>();
+//            this.usuarioRoles.forEach(usuarioRol -> {
+//                autoridades.add(new Authority(usuarioRol.getRol().getRolNombre()));
+//            });
+//            return autoridades;
+//        }
+//    }
+    
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<Authority> autoridades = new HashSet<>();
@@ -84,7 +110,6 @@ public class Usuario implements UserDetails {
             autoridades.add(new Authority(usuarioRol.getRol().getRolNombre()));
         });
         return autoridades;
-//        return null;
     }
 
     public String getPassword() {

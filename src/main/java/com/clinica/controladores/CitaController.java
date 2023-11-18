@@ -36,7 +36,7 @@ public class CitaController {
 		return new ResponseEntity<List<Citas>>(obj, HttpStatus.OK);
 	}
 	
-	@PostMapping("/registrarCita")
+	@PostMapping
 	public ResponseEntity<Void> registrar(@RequestBody Citas citas){
 		Citas obj = service.registrar(citas);
 		

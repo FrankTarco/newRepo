@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import net.bytebuddy.dynamic.loading.ClassReloadingStrategy.Strategy;
 
 @Entity
@@ -39,6 +41,7 @@ public class Citas {
 	private TipoCita tipocita;
 	@ManyToOne
 	@JoinColumn(name="idUsuario")
+	@JsonIgnore
 	private Usuario usuario;
 	public int getIdCita() {
 		return idCita;

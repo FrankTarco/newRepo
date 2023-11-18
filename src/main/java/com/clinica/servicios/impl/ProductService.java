@@ -67,7 +67,7 @@ public class ProductService {
             // we are going to checkout entire cart
         	String username = JwtRequestFilter.CURRENT_USER;
             //Long username = Long.parseLong(JwtRequestFilter.CURRENT_USER);
-            Usuario user = userDao.findById(username).get();
+            Usuario user = userDao.findByUsername(username);
             List<Cart> carts = cartDao.findByUser(user);
 
             return carts.stream().map(x -> x.getProduct()).collect(Collectors.toList());

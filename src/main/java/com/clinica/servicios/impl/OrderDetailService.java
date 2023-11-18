@@ -65,7 +65,7 @@ public class OrderDetailService {
     public List<OrderDetail> getOrderDetails() {
         String currentUser = JwtRequestFilter.CURRENT_USER;
     	//Long currentUser = Long.parseLong(JwtRequestFilter.CURRENT_USER);
-        Usuario user = userDao.findById(currentUser).get();
+        Usuario user = userDao.findByUsername(currentUser);
 
         return orderDetailDao.findByUser(user);
     }
@@ -78,7 +78,7 @@ public class OrderDetailService {
 
             String currentUser = JwtRequestFilter.CURRENT_USER;
             //Long currentUser = Long.parseLong(JwtRequestFilter.CURRENT_USER);
-            Usuario user = userDao.findById(currentUser).get();
+            Usuario user = userDao.findByUsername(currentUser);
 
             OrderDetail orderDetail = new OrderDetail(
                   orderInput.getFullName(),

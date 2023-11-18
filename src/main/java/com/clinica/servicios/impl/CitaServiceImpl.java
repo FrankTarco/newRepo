@@ -1,11 +1,14 @@
 package com.clinica.servicios.impl;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
 
 import com.clinica.modelo.Citas;
+import com.clinica.modelo.Usuario;
 import com.clinica.repositorios.ICitaRepository;
 import com.clinica.servicios.ICitaService;
 
@@ -22,6 +25,11 @@ public class CitaServiceImpl implements ICitaService{
 
 	@Override
 	public Citas registrar(Citas citas) {
+//		Usuario usuario = new Usuario();
+//		usuario.setIgnoreAuthorities(true);
+//		
+//		// Luego, cuando llames a getAuthorities(), devolverá una colección vacía o lo que se defina en el método
+//		Collection<? extends GrantedAuthority> authorities = usuario.getAuthorities();
 		return repo.save(citas);
 	}
 
