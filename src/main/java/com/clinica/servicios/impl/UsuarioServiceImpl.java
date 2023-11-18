@@ -1,6 +1,5 @@
 package com.clinica.servicios.impl;
 
-import com.clinica.modelo.Citas;
 import com.clinica.modelo.Usuario;
 import com.clinica.modelo.UsuarioRol;
 import com.clinica.repositorios.RolRepository;
@@ -46,7 +45,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public void eliminarUsuario(Long usuarioId) {
-        usuarioRepository.deleteById(usuarioId);
+        usuarioRepository.deleteById(String.valueOf(usuarioId));
     }
 
 	@Override
