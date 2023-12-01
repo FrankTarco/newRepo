@@ -1,6 +1,5 @@
 package com.clinica.controladores;
 
-import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,20 +14,18 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.clinica.modelo.Citas;
-import com.clinica.modelo.Product;
-import com.clinica.modelo.Citas;
 import com.clinica.servicios.ICitaService;
-import com.clinica.servicios.impl.CitaServiceImpl;
+
 
 
 @RestController
-@RequestMapping("/citas")
+@RequestMapping("/rest/citas")
 @CrossOrigin("*")
 public class CitaController {
-//comentario
+
+	
 	@Autowired
 	private ICitaService service;
 	
@@ -44,16 +41,20 @@ public class CitaController {
 	@GetMapping("/")
 	public ResponseEntity<List<Citas>> listar(){
 		List<Citas> obj = service.listar();
-		return new ResponseEntity<List<Citas>>(obj, HttpStatus.OK);
+		return ResponseEntity.ok(obj);
 	}
 	
 	@PostMapping
-	public ResponseEntity<Void> registrar(@RequestBody Citas citas){
+	public ResponseEntity<Citas> registrar(@RequestBody Citas citas){
+		
 		Citas obj = service.registrar(citas);
 		
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getIdCita()).toUri();
+	//	URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getIdCita()).toUri();
 
-		return ResponseEntity.created(uri).build();
+//		return ResponseEntity.created(uri).build();
+		
+		return ResponseEntity.ok(obj);
+		
 	}
 
 	@PutMapping

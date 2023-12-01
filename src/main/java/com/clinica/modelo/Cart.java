@@ -1,6 +1,6 @@
 package com.clinica.modelo;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table
